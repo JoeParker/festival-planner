@@ -12,6 +12,7 @@
       [ "Gateway", "Lekiddo", thurs(17, 40), thurs(18, 10) ],
       [ "William's Green", "Michael Eavis & Band", thurs(18, 45), thurs(19, 20) ],
       [ "William's Green", "TBA", thurs(19, 45), thurs(20, 25) ],
+      [ "William's Green", "Elvana", thurs(21, 10), thurs(22, 10) ],
       [ "Rabbit Hole", "Four Tet", fri(00, 00), fri(01, 30) ],
       [ "Glade", "Camelphat", fri(00, 25), fri(02, 25) ],
     ]
@@ -35,22 +36,22 @@
 
     dataTable.addRows(acts);
 
+    const stages = new Set(acts.map(arr => arr[0]))
+    const rowHeight = 51
+
     var options = {
-      timeline: { colorByRowLabel: false }, // Colour by stage
+      timeline: { colorByRowLabel: true }, // Colour by stage
       chartArea: {
-        height: '100%',
-        width: '100%',
-        top: 48,
-        left: 48,
-        right: 16,
-        bottom: 48
+        height: "100%",
+        width: "100%",
       },
-      height: '100%',
-      width: '100%',
+      height: stages.size * rowHeight,
     };
 
     chart.draw(dataTable, options);
   }
+
+  // Convenience funcs
 
   function thurs(hour, min) {
     return time(1, hour, min)
@@ -66,13 +67,13 @@
 </script>
 
 <h1>Thursday</h1>
-<div id="thursday" style="overflow: auto; height: auto;"></div>
+<div id="thursday" style="height: auto;"></div>
 
 <h1>Friday</h1>
-<div id="friday" style="height: 100%;"></div>
+<div id="friday" style="height: auto;"></div>
 
 <h1>Saturday</h1>
-<div id="saturday" style="height: 100%;"></div>
+<div id="saturday" style="height: auto;"></div>
 
 <h1>Sunday</h1>
-<div id="sunday" style="height: 100%;"></div>
+<div id="sunday" style="height: auto;"></div>
